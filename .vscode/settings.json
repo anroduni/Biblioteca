@@ -1,0 +1,10 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "Nada",
+            "database": "C:\\Users\\anton\\Desktop\\bd\\da\\biblioteca.db"
+        }
+    ]
+}
