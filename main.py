@@ -1,6 +1,10 @@
 import tkinter as tk
 from estructura import crear_menu_lateral, crear_frame_principal
-from funciones_menu import funcion_inicio, funcion_ver, funcion_agregar, funcion_editar, funcion_eliminar
+from funciones_menu import funcion_ver, funcion_agregar, funcion_editar, funcion_eliminar
+
+def limpiar(frame_principal):
+    for root in frame_principal.winfo_children():
+        root.destroy()
 
 def main():
     ventana = tk.Tk()
@@ -13,7 +17,7 @@ def main():
     frame_principal.pack(side="left", fill="both", expand=True)
 
     botones = [
-        ("Inicio", lambda: funcion_inicio(frame_principal)),
+        
         ("Ver", lambda: funcion_ver(frame_principal)),
         ("Agregar", lambda: funcion_agregar(frame_principal)),
         ("Editar", lambda: funcion_editar(frame_principal)),

@@ -35,9 +35,9 @@ def fomulario(frame_principal):
 
     # Crear nuevas entradas
     for text, row in campos:
-        ttk.Label(frame_principal, text=text, font=("Georgia", 14), background="NavajoWhite3").grid(column=0, row=row, **label_options)
+        ttk.Label(frame_principal, text=text, font=("Georgia", 14), background="white").grid(column=0, row=row, **label_options)
         var = tk.StringVar()
-        entry = tk.Entry(frame_principal, font=("Georgia", 14), bg="NavajoWhite3", textvariable=var)
+        entry = tk.Entry(frame_principal, font=("Georgia", 14), bg="white", textvariable=var)
         entry.grid(column=1, row=row, **entry_options)
         entries.append((entry, row, var))
 
@@ -70,9 +70,9 @@ def formeliminar(frame_principal):
 
     # Crear nuevas entradas
     for text, row in campos:
-        ttk.Label(frame_principal, text=text, font=("Georgia", 14), background="NavajoWhite3").grid(column=0, row=row, **label_options)
+        ttk.Label(frame_principal, text=text, font=("Georgia", 14), background="white").grid(column=0, row=row, **label_options)
         var = tk.StringVar()
-        entry = tk.Entry(frame_principal, font=("Georgia", 14), bg="NavajoWhite3", textvariable=var)
+        entry = tk.Entry(frame_principal, font=("Georgia", 14), bg="white", textvariable=var)
         entry.grid(column=1, row=row, **entry_options)
         entradas.append((entry, row, var))
 
