@@ -49,12 +49,12 @@ def tabla(frame_principal):
     container.grid_columnconfigure(0, weight=1)
 
 # Crear la ventana principal
-root = tk.Tk()
-root.geometry("800x600")
+#root = tk.Tk()
+#root.geometry("800x600")
 
 # Crear el frame principal
-frame_principal = ttk.Frame(root)
-frame_principal.pack(fill=tk.BOTH, expand=True)
+#frame_principal = ttk.Frame(root)
+#frame_principal.pack(fill=tk.BOTH, expand=True)
     
 
 

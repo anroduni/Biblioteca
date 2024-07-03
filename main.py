@@ -2,9 +2,6 @@ import tkinter as tk
 from estructura import crear_menu_lateral, crear_frame_principal
 from funciones_menu import funcion_ver, funcion_agregar, funcion_editar, funcion_eliminar
 
-def limpiar(frame_principal):
-    for root in frame_principal.winfo_children():
-        root.destroy()
 
 def main():
     ventana = tk.Tk()
