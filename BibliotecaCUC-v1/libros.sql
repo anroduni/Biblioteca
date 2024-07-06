@@ -13,14 +13,14 @@
 INSERT INTO libros(
     ID, Titulo, Autor, Editorial, Num_Edicion, Año_publicacion, paginas, rama, ISBN, ubicacion
 ) VALUES (
-    229,--id
-    "Frontiers",--titulo
-    "John Schmidt",--autor
-    "Addison Wesley",--editorial
+    8,--id
+    "Mexico",--titulo
+    "Teresa de Maria y Campos",--autor
+    "Banamex",--editorial
     1,--edicion
-    1988,--año publicacion
-    324,--paginas
-    "Ingles",--Rama
-    0201149907,--ISBN
-    "Librero de cultura general, fila 2 columna 4"--Ubicacion
+    1990,--año publicacion
+    178,--paginas
+    "Historia",--Rama
+    9687009217,--ISBN
+    "Librero de cultura general, fila 3 columna 4"--Ubicacion
 )
