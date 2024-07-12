@@ -15,7 +15,7 @@ def create_rounded_rectangle_image(width, height, radius, color):
     return image
 
 def login(frame_principal, usuario, contrasena):
-    conn = sqlite3.connect('usuarios.db')
+    conn = sqlite3.connect('BibliotecaCUC/bibliotecaCelsus.db')
     cursor = conn.cursor()
 
     cursor.execute('''

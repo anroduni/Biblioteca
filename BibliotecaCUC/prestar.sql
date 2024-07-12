@@ -1,5 +1,5 @@
+/* 
 
-/*
 CREATE TABLE prestar(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     solicitante CHAR(30),
@@ -13,8 +13,6 @@ CREATE TABLE prestar(
 /* SELECT p.id, p.libro_id, l.Titulo
 FROM prestar AS p
 INNER JOIN libros AS l ON p.libro_id = l.ID; */
---UPDATE prestar
-   --     SET estatus = Devuelto
-       -- WHERE id = 
-
-DROP TABLE if EXISTS disponibilidad;
+UPDATE prestar
+        SET estatus = Devuelto
+        WHERE id = 

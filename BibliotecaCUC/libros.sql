@@ -13,8 +13,8 @@
 INSERT INTO libros(
     ID, Titulo, Autor, Editorial, Num_Edicion, Año_publicacion, paginas, rama, ISBN, ubicacion
 ) VALUES (
-    179,--id
-    "Historia y arte de la seda en Mexico",--titulo
+    8,--id
+    "Mexico",--titulo
     "Teresa de Maria y Campos",--autor
     "Banamex",--editorial
     1,--edicion
