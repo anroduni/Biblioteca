@@ -1,0 +1,8 @@
+{
+    "window.commandCenter": true,
+    "window.confirmSaveUntitledWorkspace": true,
+    "window.density.editorTabHeight": "default",
+    "search.collapseResults": "alwaysExpand",
+    "extensions.closeExtensionDetailsOnViewChange": false,
+    "window.zoomLevel": 1
+}

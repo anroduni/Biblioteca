@@ -7,4 +7,4 @@
 --    fecha_fin char(8)
 --)
 --UPDATE libros set Año_publicacion=1 Where id=97
-Delete from libros where id=215
+Delete from libros where id=151
