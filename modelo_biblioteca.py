@@ -72,10 +72,12 @@ def traerpres():
         conexion = sql.connect("BibliotecaCUC/bibliotecaCelsus.db")
         cursor = conexion.cursor()
 
-        cursor.execute('''SELECT p.id, p.libro_id, l.Titulo
-FROM prestar AS p
-INNER JOIN libros AS l ON p.libro_id = l.ID
-''')
+        cursor.execute('''
+            SELECT p.id, p.libro_id, l.Titulo
+            FROM prestar AS p
+            INNER JOIN libros AS l ON p.libro_id = l.ID
+            WHERE p.estatus="Prestado" OR p.estatus="Seleccione"
+        ''')
 
         # Obtener todos los registros
         libros_prestados = cursor.fetchall()
@@ -188,7 +190,10 @@ def prestamos(solicitante, carrera, fecha_inicio, fecha_fin, libro_id, estatus):
 
     # Crear un cursor
     cursor = conexion.cursor()
-
+    
+    #Manejo estatus
+    if estatus=="Seleccione":
+        estatus="Prestado"
     # Sentencia SQL para insertar datos en la tabla 'prestar'
     cursor.execute('''
     INSERT INTO prestar (
@@ -203,3 +208,18 @@ def prestamos(solicitante, carrera, fecha_inicio, fecha_fin, libro_id, estatus):
     conexion.close()
 
     return "Prestamo concretado"
+
+def obtener_datos_prestamos():
+    import sqlite3 as sql
+    
+    conn = sql.connect('BibliotecaCUC/bibliotecaCelsus.db')
+    cursor = conn.cursor()
+    
+    cursor.execute('SELECT libro_id, COUNT(*) FROM prestar GROUP BY libro_id')
+    prestamos = cursor.fetchall()
+    
+    cursor.execute('SELECT ID, Titulo FROM libros')
+    libros = cursor.fetchall()
+    print(prestamos)
+    conn.close()
+    return prestamos, libros

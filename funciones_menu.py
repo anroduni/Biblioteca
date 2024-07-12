@@ -3,9 +3,7 @@ from tkinter import ttk
 from fomularios import *
 from controlador_biblioteca import *
 from tkinter import messagebox
-import sqlite3
-import subprocess
-import sys
+from PIL import Image, ImageTk
 
 def funcion_ver(frame_principal):
     limpiar(frame_principal)
@@ -60,5 +58,20 @@ def limpiar(frame):
     for widget in frame.winfo_children():
         widget.destroy()
 
-
-#root.mainloop()
+def mostrar_grafica(frame_principal, incluir_todos_los_libros=False):
+    limpiar(frame_principal)
+    # Limpiar el frame_principal
+    for widget in frame_principal.winfo_children():
+        widget.destroy()
+    
+    # Generar el gráfico
+    grafica(incluir_todos_los_libros)
+    
+    # Cargar la imagen del gráfico
+    imagen = Image.open('grafico_prestamos.png')
+    imagen_tk = ImageTk.PhotoImage(imagen)
+    
+    # Crear un widget Label para mostrar la imagen
+    label_imagen = ttk.Label(frame_principal, image=imagen_tk)
+    label_imagen.image = imagen_tk  # Necesario para evitar que la imagen sea recolectada por el garbage collector
+    label_imagen.pack(padx=10, pady=10)
