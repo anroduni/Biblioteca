@@ -141,7 +141,9 @@ def regresar(entries):
     if not libro_seleccionado or not estatus_seleccionado:
         mostrar_mensaje("Por favor completa todos los campos.")
         return
-    
+    #Manejo de estatus
+    if estatus_seleccionado=="Seleccione":
+        estatus_seleccionado="Devuelto"
     libros_dict = entries[2]  # Obtener el diccionario de libros
 
     # Obtener el ID del libro seleccionado
@@ -164,7 +166,33 @@ def mostrar_mensaje(mensaje):
     root.withdraw()  # Oculta la ventana principal
     messagebox.showinfo("Información", mensaje)
     root.destroy()
-#DESGLOZAR LOS VALORES Y COMPARARAR; SI LA TUPLA[?]ESTA VACIA ENTONCES MANDO MENSAJE DE POR FAVOR LLEVE EL VALOR DL CAMPO TAL, SI NO ESTA VACIO CONTINUO NORMALMENTE
 
- 
-#ENTONCES FALTA: VALIDAR DATOS ANTES DE CRUD, PRESTR Y OBTNEER DEVUELTA LIBROS, AGREGAR BARRA DE SCROLL A LA TABLA DE VER; COMO PLUS, EDITAR, ELIMINAR O PRESTAR/OBTENETR LIBRO DESDE LA TABLA VER
+import matplotlib.pyplot as plt
+
+def grafica(incluir_todos_los_libros=False):
+    prestamos, libros = obtener_datos_prestamos()
+
+    # Crear un diccionario para contar los préstamos
+    conteo_prestamos = {libro_id: 0 for libro_id, _ in libros}
+    
+    for libro_id, count in prestamos:
+        conteo_prestamos[libro_id] = count
+    
+    if not incluir_todos_los_libros:
+        conteo_prestamos = {libro_id: count for libro_id, count in conteo_prestamos.items() if count > 0}
+    
+    # Preparar los datos para el gráfico
+    nombres_libros = [nombre for _, nombre in libros if _ in conteo_prestamos]
+    conteos = [conteo_prestamos[_] for _, nombre in libros if _ in conteo_prestamos]
+    
+    # Crear el gráfico de barras
+    plt.figure(figsize=(10, 6))
+    plt.bar(nombres_libros, conteos, color='skyblue')
+    plt.xlabel('Libros')
+    plt.ylabel('Número de Préstamos')
+    plt.title('Cantidad de Préstamos por Libro')
+    plt.xticks(rotation=45, ha='right')
+    plt.tight_layout()
+    
+    # Guardar el gráfico como imagen
+    plt.savefig('grafico_prestamos.png')

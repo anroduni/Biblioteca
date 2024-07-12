@@ -21,7 +21,8 @@ def main():
         ("Eliminar", lambda: funcion_eliminar(frame_principal)),
         ("Prestar", lambda: funcion_prestar(frame_principal)),
         ("Ver prestados", lambda: funcion_verprestados(frame_principal)),
-        ("Reingresar prestados", lambda: funcion_reingreso(frame_principal))
+        ("Reingresar prestados", lambda: funcion_reingreso(frame_principal)),
+        ("Graficas de prestados", lambda: mostrar_grafica(frame_principal))
         
     ]
 
