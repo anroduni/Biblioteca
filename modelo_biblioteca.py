@@ -22,6 +22,27 @@ def ver():
     
     return datos
 
+def vereliminar():
+    import sqlite3 as sql
+    # Conectar a la base de datos
+    conexion = sql.connect("BibliotecaCUC/bibliotecaCelsus.db")
+
+    # Crear un cursor
+    cursor = conexion.cursor()
+
+    # Ejecutar la consulta
+    cursor.execute('''SELECT ID, Titulo FROM libros''')
+
+
+    # Obtener todos los resultados
+    datos = cursor.fetchall()
+
+    #Cerrar cursor
+    cursor.close()
+    # Cerrar la conexión
+    conexion.close()
+    
+    return datos
 
 def versi():
     import sqlite3 as sql
@@ -32,7 +53,14 @@ def versi():
     cursor = conexion.cursor()
 
     # Ejecutar la consulta
-    cursor.execute('''SELECT ID, Titulo FROM libros''')
+    cursor.execute('''
+    SELECT l.ID, l.Titulo, 
+           COALESCE(p.estatus, 'No Prestado') as estatus
+    FROM libros AS l
+    LEFT JOIN prestar AS p ON l.ID = p.libro_id
+    WHERE p.estatus IS NULL OR p.estatus="Devuelto" OR p.estatus="Seleccione"
+''')
+
 
     # Obtener todos los resultados
     datos = cursor.fetchall()
@@ -164,6 +192,10 @@ def update(ID, Titulo, Autor, Editorial, Num_Edicion, Año_publicacion, paginas,
 
 def eliminarle(ID):
     import sqlite3 as sql
+    
+         # Comprobar si el ID seleccionado es cero
+    if ID == "0":
+        return "Escoje otro libro"  # Salir de la función si el ID es cero
     # Conectar a la base de datos
     conexion = sql.connect("BibliotecaCUC/bibliotecaCelsus.db")
     cursor = conexion.cursor()

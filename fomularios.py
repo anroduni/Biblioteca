@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 from tkcalendar import DateEntry
-from modelo_biblioteca import versi, verpres, traerpres
+from modelo_biblioteca import versi, vereliminar, traerpres
 
 # Lista para almacenar las entradas
 entries = []
@@ -70,7 +70,7 @@ def formeliminar(frame_principal):
     entradas.clear()
 
     # Obtener los nombres de los libros desde versi()
-    datos_libros = [("0", "Seleccione")] + versi()  # Agregar una opción de selección inicial
+    datos_libros = [("0", "Seleccione")] + vereliminar()  # Agregar una opción de selección inicial
 
     # Crear nuevas entradas
     for text, row in campos:
